@@ -26,3 +26,9 @@ a{
 a:hover{
   color: grey;
 }
+
+
+.noty_theme__mint {
+  border-radius: 50px !important;
+  padding-left: 8px !important;
+}
