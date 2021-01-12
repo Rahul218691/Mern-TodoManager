@@ -22,7 +22,7 @@ if(process.env.NODE_ENV === 'development'){
 
 
 app.use('/v1/api/auth',require('./routes/authRoute'));
-
+app.use('/v1/api/task',require('./routes/taskRoute'));
 
 app.use(notFound);
 app.use(errorHandler);
