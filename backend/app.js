@@ -5,7 +5,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const {notFound,errorHandler} = require('./middlewares/errorMiddleware');
+const connectDB = require('./config/db');
 
+
+
+connectDB();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
@@ -17,7 +21,7 @@ if(process.env.NODE_ENV === 'development'){
 
 
 
-
+app.use('/v1/api/auth',require('./routes/authRoute'));
 
 
 app.use(notFound);
