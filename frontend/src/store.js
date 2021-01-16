@@ -7,9 +7,14 @@ import {
     userLoginReducer
 } from './reducers/authReducers';
 
+import {
+    todoReducer
+} from './reducers/todoReducers';
+
 const reducer = combineReducers({
     userRegister:userRegisterReducer,
-    userLogin:userLoginReducer
+    userLogin:userLoginReducer,
+    todos:todoReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -12,7 +12,7 @@ const createTask = asyncHandler(async(req,res) =>{
         createdBy:req.user._id
     });
     if(task){
-        res.json({message:'Task created successfully'})
+        res.json(task);
     }else{
         res.status(400)
         throw new Error('Failed to create a task')
