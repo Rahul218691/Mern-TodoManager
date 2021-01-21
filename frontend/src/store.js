@@ -8,13 +8,19 @@ import {
 } from './reducers/authReducers';
 
 import {
-    todoReducer
+    todoReducer,
+    singleTodoReducer,
+    addSubTodoList,
+    deleteSubTodoList
 } from './reducers/todoReducers';
 
 const reducer = combineReducers({
     userRegister:userRegisterReducer,
     userLogin:userLoginReducer,
-    todos:todoReducer
+    todos:todoReducer,
+    listTodo:singleTodoReducer,
+    subTask:addSubTodoList,
+    deleteSubTask:deleteSubTodoList
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

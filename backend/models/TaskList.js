@@ -6,6 +6,10 @@ const tasklistSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    taskName:{
+        type:String,
+        required:true
+    },
     user:{
         type:ObjectId,
         ref:'user'

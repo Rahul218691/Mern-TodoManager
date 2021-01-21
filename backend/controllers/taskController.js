@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Task = require('../models/Task');
+const TaskList = require('../models/TaskList');
 
 const createTask = asyncHandler(async(req,res) =>{
     const {name} = req.body;
@@ -32,12 +33,84 @@ const deleteTask = asyncHandler(async(req,res) =>{
         throw new Error('Not allowed to perform this action')
     }else{
         await Task.findByIdAndDelete(id);
+        await TaskList.findOneAndRemove({taskId:id});
         res.json({message:'Task removed successfully'})
+    }
+});
+
+const addTaskList = asyncHandler(async(req,res) =>{
+    const {taskId} = req.params;
+    const {task,name} = req.body;
+    
+    if(!task){
+        res.status(400)
+        throw new Error('Please create a task');
+    }
+
+    const Exist = await TaskList.findOne({taskId});
+    // console.log(Exist)
+
+    if(!Exist){
+        const newTask = new TaskList({
+            taskId,
+            taskName:name,
+            user:req.user._id,
+            tasklists:[
+                {
+                    task
+                }
+            ]
+        });
+    
+        const createTaskList = await newTask.save();
+        res.status(201).json(createTaskList)
+    }else{
+        const taskupdate = await TaskList.findOneAndUpdate({taskId},{
+            $push:{
+                tasklists:{
+                    task
+                }
+            }
+        },{
+            new:true
+        })
+        res.json(taskupdate);
+    }
+    
+});
+
+const getTaskById = asyncHandler(async(req,res) =>{
+    const {taskId} = req.params;
+    const TaskSubTask = await TaskList.find({taskId});
+    res.json(TaskSubTask);
+})
+
+const deleteSubTask = asyncHandler(async(req,res) =>{
+    const {taskId,tasklistId} = req.params;
+    const TaskExist = await TaskList.findOne({taskId});
+    // console.log(TaskExist)
+    if(!TaskExist){
+        res.status(400)
+        throw new Error('Task not found');
+    }else{
+        const pullRecord = await TaskList.findOneAndUpdate({taskId},{
+            $pull:{
+                tasklists:{
+                    _id:tasklistId
+                }
+            }
+        },{
+            new:true
+        });
+        res.json(pullRecord)
     }
 })
 
 module.exports = {
     createTask,
     getTasks,
-    deleteTask
+    deleteTask,
+    addTaskList,
+    getTaskById,
+    deleteSubTask
 }

@@ -9,6 +9,8 @@ import {
     USER_LOGOUT
 } from '../constants/authConstants';
 
+import {TODO_RESET} from '../constants/todoConstants';
+
 const baseURL = 'http://localhost:5000/v1/api/auth';
 
 export const register = (name,email,password) => async (dispatch) => {
@@ -79,5 +81,6 @@ export const register = (name,email,password) => async (dispatch) => {
 
   export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
-    dispatch({ type: USER_LOGOUT })
+    dispatch({ type: USER_LOGOUT });
+    dispatch({type:TODO_RESET})
   }
