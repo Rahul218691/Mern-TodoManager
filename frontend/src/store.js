@@ -11,7 +11,8 @@ import {
     todoReducer,
     singleTodoReducer,
     addSubTodoList,
-    deleteSubTodoList
+    deleteSubTodoList,
+    addTaskCompleted
 } from './reducers/todoReducers';
 
 const reducer = combineReducers({
@@ -20,7 +21,8 @@ const reducer = combineReducers({
     todos:todoReducer,
     listTodo:singleTodoReducer,
     subTask:addSubTodoList,
-    deleteSubTask:deleteSubTodoList
+    deleteSubTask:deleteSubTodoList,
+    taskComplete:addTaskCompleted
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

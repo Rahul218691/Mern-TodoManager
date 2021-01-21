@@ -9,7 +9,10 @@ CREATE_SUB_TODO_FAIL,
 TODO_RESET,
 DELETE_SUBTASK_REQUEST,
 DELETE_SUBTASK_SUCCESS,
-DELETE_SUBTASK_FAIL
+DELETE_SUBTASK_FAIL,
+ADD_TASK_COMPLETE_REQUEST,
+ADD_TASK_COMPLETE_SUCCESS,
+ADD_TASK_COMPLETE_FAIL
 } from '../constants/todoConstants';
 
 
@@ -60,6 +63,19 @@ export const todoReducer = (todos=[], action) => {
         return {loading:false,taskdelete:true}
       case DELETE_SUBTASK_FAIL:
         return {loading:false,taskdelete:false}  
+      default:
+        return state;  
+    }
+  }
+
+  export const addTaskCompleted = (state={},action) =>{
+    switch(action.type){
+      case ADD_TASK_COMPLETE_REQUEST:
+        return {loading:true,taskcomplete:false}
+      case ADD_TASK_COMPLETE_SUCCESS:
+        return {loading:false,taskcomplete:true}
+      case ADD_TASK_COMPLETE_FAIL:
+        return {loading:false,taskcomplete:false}  
       default:
         return state;  
     }

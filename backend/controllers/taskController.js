@@ -104,6 +104,25 @@ const deleteSubTask = asyncHandler(async(req,res) =>{
         });
         res.json(pullRecord)
     }
+});
+
+const addTaskCompleted = asyncHandler(async(req,res) =>{
+    const {taskId,tasklistId} = req.params;
+    const TaskExist = await TaskList.findOne({taskId});
+    if(!TaskExist){
+        res.status(400)
+        throw new Error('Task not found');
+    }else{
+        const patchRec = await TaskList.findOne({taskId});
+        const getid = patchRec.tasklists;
+        for(var i = 0; i< getid.length; i++) {
+            if(getid[i]._id == tasklistId){
+                 getid[i].completed = true;
+                 await patchRec.save();
+            }
+        }
+        res.send({})
+    }
 })
 
 module.exports = {
@@ -112,5 +131,6 @@ module.exports = {
     deleteTask,
     addTaskList,
     getTaskById,
-    deleteSubTask
+    deleteSubTask,
+    addTaskCompleted
 }

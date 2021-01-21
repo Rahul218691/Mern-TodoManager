@@ -9,7 +9,10 @@ CREATE_SUB_TODO_REQUEST,
 CREATE_SUB_TODO_FAIL,
 DELETE_SUBTASK_FAIL,
 DELETE_SUBTASK_REQUEST,
-DELETE_SUBTASK_SUCCESS
+DELETE_SUBTASK_SUCCESS,
+ADD_TASK_COMPLETE_REQUEST,
+ADD_TASK_COMPLETE_SUCCESS,
+ADD_TASK_COMPLETE_FAIL
 } from '../constants/todoConstants';
 
 const baseURL = 'http://localhost:5000/v1/api/task';
@@ -153,6 +156,34 @@ export const getTodosList = () =>async(dispatch,getState) =>{
       console.log(error);
       dispatch({
         type:DELETE_SUBTASK_FAIL
+      })
+    }
+  }
+
+  export const AddToComplete = (taskId,tasklistId) => async(dispatch,getState) =>{
+    try {
+      dispatch({
+        type:ADD_TASK_COMPLETE_REQUEST
+      })
+      const {
+        userLogin: { userInfo },
+      } = getState()
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+      const {data} = await axios.patch(`${baseURL}/subtask/${taskId}/tasks/${tasklistId}`,{},config);
+      // console.log(data)
+      dispatch({
+        type:ADD_TASK_COMPLETE_SUCCESS,
+        payload:data
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type:ADD_TASK_COMPLETE_FAIL
       })
     }
   }

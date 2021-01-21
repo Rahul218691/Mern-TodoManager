@@ -32,3 +32,7 @@ a:hover{
   border-radius: 50px !important;
   padding-left: 8px !important;
 }
+
+.strikethrough {
+  text-decoration: line-through;
+}
