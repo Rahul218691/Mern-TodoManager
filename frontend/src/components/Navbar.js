@@ -28,6 +28,15 @@ function Navbar() {
             {
                 userInfo ? (
                     <>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Settings
+                        </Link>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <Link className="dropdown-item" to="/profile">Profile</Link>
+                        <Link className="dropdown-item" to="/changepassword">Change Password</Link>
+                        </div>
+                    </li>
                     <li className="nav-item" onClick={logoutHandler}>
                         <Link className="nav-link" to="#">Logout</Link>
                     </li>

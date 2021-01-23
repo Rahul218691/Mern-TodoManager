@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import {Navbar,PrivateRoute} from './components';
-import {Dashboard,Login,Register,ForgotPass,UpdatePass} from './pages';
+import {Dashboard,Login,Register,ForgotPass,UpdatePass,ChangePass,Profile} from './pages';
 
 const App = () =>{
   return (
@@ -13,6 +13,8 @@ const App = () =>{
             <Route component={Register} path="/register" exact/>
             <Route component={ForgotPass} path='/forgotpass' exact/>
             <Route component={UpdatePass} path='/verification' exact/>
+            <PrivateRoute component={Profile} path='/profile' exact/>
+            <PrivateRoute component={ChangePass} path='/changepassword' exact/>
         </Switch>
     </BrowserRouter>
   );
