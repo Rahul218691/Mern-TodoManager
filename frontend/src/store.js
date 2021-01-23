@@ -15,6 +15,11 @@ import {
     addTaskCompleted
 } from './reducers/todoReducers';
 
+import {
+    passwordResetRequestReducer,
+    passwordUpdateRequestReducer
+} from './reducers/passwordReducers';
+
 const reducer = combineReducers({
     userRegister:userRegisterReducer,
     userLogin:userLoginReducer,
@@ -22,7 +27,9 @@ const reducer = combineReducers({
     listTodo:singleTodoReducer,
     subTask:addSubTodoList,
     deleteSubTask:deleteSubTodoList,
-    taskComplete:addTaskCompleted
+    taskComplete:addTaskCompleted,
+    resetPassword:passwordResetRequestReducer,
+    updatePassword:passwordUpdateRequestReducer
 });
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

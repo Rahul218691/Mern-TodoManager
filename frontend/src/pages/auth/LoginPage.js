@@ -69,7 +69,7 @@ function LoginPage({location,history}) {
                 </div>    
                 <div className="logintypes">
                     <div><Link to='/register'>New User? Click Here</Link></div>
-                    <div><Link to="#">ForgotPassword?</Link></div>
+                    <div><Link to="/forgotpass">ForgotPassword?</Link></div>
                 </div>
                 <button className="btn btn-primary" type="submit">Login</button>            
             </form>
