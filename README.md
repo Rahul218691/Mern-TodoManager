@@ -2,7 +2,7 @@
 
 Simple Todo application with task progress indication using fusion charts\
 Used sendInBlue service for sending email https://www.sendinblue.com/.\
-JWT Based User Authentication\
+JWT Based User Authentication
 
 # Features
 User Register\
