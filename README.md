@@ -1,7 +1,7 @@
-# Mern-TodoManager \
+# Mern-TodoManager 
 
-Simple Todo application with task progress indication using fusion charts \n
-Used sendInBlue service for sending email https://www.sendinblue.com/. /n
+Simple Todo application with task progress indication using fusion charts\
+Used sendInBlue service for sending email https://www.sendinblue.com/.\
 JWT Based User Authentication /n
 
 # Features /n
