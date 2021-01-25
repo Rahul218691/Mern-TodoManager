@@ -7,7 +7,7 @@ JWT Based User Authentication\
 # Features
 User Register\
 User Login\
-ForgotPassword /n
+ForgotPassword\
 Add TODO, DELETE TODO, Mark Todo as Complete, Delete a todo task.\
 Task representation on fusion charts which displays the % of completed and incompleted tasks.\
 User update Password\
