@@ -2,33 +2,33 @@
 
 Simple Todo application with task progress indication using fusion charts\
 Used sendInBlue service for sending email https://www.sendinblue.com/.\
-JWT Based User Authentication /n
+JWT Based User Authentication\
 
-# Features /n
-User Register /n
-User Login /n
+# Features
+User Register\
+User Login\
 ForgotPassword /n
-Add TODO, DELETE TODO, Mark Todo as Complete, Delete a todo task. /n
-Task representation on fusion charts which displays the % of completed and incompleted tasks. /n
-User update Password /n
-User edit Profile /n
+Add TODO, DELETE TODO, Mark Todo as Complete, Delete a todo task.\
+Task representation on fusion charts which displays the % of completed and incompleted tasks.\
+User update Password\
+User edit Profile\
 
 
-To Run -> /n
-Clone the repository /n
+To Run ->\
+Clone the repository\
 
-Add .env file inside backend folder /n
+Add .env file inside backend folder\
 
-NODE_ENV=development /n
-MONGO_URI=MongoURL /n
-JWT_SECRET=SECRETTOKEN /n
-NODEMAILER_USER=SENDINBlueEmail /n
-NODEMAILER_PASS=SENDINBLUEPASSWORD /n
-SMTP_HOST=SENDINBLUEHOST /n
-SMTP_PORT=587 /n
+NODE_ENV=development\
+MONGO_URI=MongoURL\
+JWT_SECRET=SECRETTOKEN\
+NODEMAILER_USER=SENDINBlueEmail\
+NODEMAILER_PASS=SENDINBLUEPASSWORD\
+SMTP_HOST=SENDINBLUEHOST\
+SMTP_PORT=587\
 
-node app.js on backend /n
-npm start to run frontend /n
+node app.js on backend\
+npm start to run frontend\
 
 
 
