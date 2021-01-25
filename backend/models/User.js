@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
 	verification:{
 		type:String
 	},
+	profile:{
+		type:String,
+		default:'https://res.cloudinary.com/rahulcloudstorage/image/upload/v1591775417/images_lg4hyi.png'
+	},
 },{
 	timestamps:true
 });

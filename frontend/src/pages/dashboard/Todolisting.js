@@ -62,7 +62,7 @@ export default function Todolisting({change}) {
 
     return (
         <div className="container mt-2">
-            <Message type="secondary">Task: {todoname && todoname} <span className="float-right"><Link to="#" onClick={()=>setOpen(prevOpen => !prevOpen)}><i className="fas fa-chart-pie mr-2"></i>{open ? 'Hide Graph' : 'View Graph'}</Link></span></Message>
+            <Message type="secondary">Task: {todoname && todoname} {TodoList[0] && <span className="float-right"><Link to="#" onClick={()=>setOpen(prevOpen => !prevOpen)}><i className="fas fa-chart-pie mr-2"></i>{open ? 'Hide Graph' : 'View Graph'}</Link></span>}</Message>
             <div>
                 <form onSubmit={handleAddTask}>
                 <div className="input-group mb-3">
