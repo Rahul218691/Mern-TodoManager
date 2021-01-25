@@ -1,39 +1,72 @@
 import React,{useState,useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import {Message,Loader} from '../../components';
+import {USER_PROFILE_UPDATE_RESET} from '../../constants/userConstants';
+import {updateProfile} from '../../actions/userActions';
 
 function ProfilePage() {
 
-    const {userInfo} = useSelector(state=>state.userLogin);
+    const dispatch = useDispatch()
 
-    const [name,setName] = useState('');
-    const [email,setEmail] = useState('');
-    const [profile,setProfile] = useState('');
-    const [img,setImg] = useState('');
+    const {userInfo} = useSelector(state=>state.userLogin);
+    const {loading,error} = useSelector(state=>state.userProfileUpdate);
+
+   const [values,setValues] = useState({
+    name:'',
+    email:'',
+    profile:'',
+    img:'',
+    formData:new FormData()
+   });
+
+   const {name,email,formData,img} = values;
+
+    const handleOnChange = name =>event =>{
+        const value = name === "profile" ? event.target.files[0] : event.target.value;
+        formData.set(name,value);
+        setValues({...values,[name]:value})
+    }
+
+    const handleProfileSubmit = e =>{
+        e.preventDefault();
+        dispatch(updateProfile(formData));
+    }
 
     useEffect(() =>{
         if(userInfo){
-            setName(userInfo.name);
-            setEmail(userInfo.email);
-            setProfile(userInfo.profile)
-        }
-    },[userInfo]);
+            setValues({
+                ...values,
+                name:userInfo.name,
+                img:userInfo.profile,
+                email:userInfo.email
+            });
+        }// eslint-disable-next-line
+    },[userInfo])
 
+	if(error){
+        setTimeout(()=>dispatch({
+            type:USER_PROFILE_UPDATE_RESET
+        }),2000);	
+    }   
 
     return (
         <div className="container mt-5">
             <h4 className="text-center">User Profile</h4>
+            {loading && <Loader />}
+            {error && <Message type="danger">{error}</Message>}
             <div className="row">
                     <div className="col-md-4">
-                        <img src={profile} className="img-fluid" alt=""/>
+                        <img src={img} className="img-fluid" alt=""/>
                     </div>
                     <div className="col-md-8">
-                        <form>
+                        <form onSubmit={handleProfileSubmit}>
                             <div className="form-group">
                                 <label htmlFor="username">Username</label>
                                 <input type="text" placeholder="username"
                                 className="form-control"
                                 value={name}
-                                onChange={(e)=>setName(e.target.value)}
+                                name="name"
+                                onChange={handleOnChange('name')}
                                 />
                             </div>
                             <div className="form-group">
@@ -45,7 +78,9 @@ function ProfilePage() {
                                 />
                             </div>
                             <div className="custom-file mb-3">
-                                <input type="file" className="custom-file-input" id="validatedCustomFile" onChange={(e)=>setImg(e.target.files[0])}/>
+                                <input type="file" className="custom-file-input" id="validatedCustomFile"
+                                name="profile"
+                                onChange={handleOnChange('profile')}/>
                                 <label className="custom-file-label" htmlFor="validatedCustomFile">Choose file...</label>
                             </div>
                             <button className="btn btn-warning" type="submit">UpdateProfile</button>
