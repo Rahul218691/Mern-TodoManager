@@ -11,13 +11,13 @@ ForgotPassword\
 Add TODO, DELETE TODO, Mark Todo as Complete, Delete a todo task.\
 Task representation on fusion charts which displays the % of completed and incompleted tasks.\
 User update Password\
-User edit Profile\
+User edit Profile
 
 
 To Run ->\
-Clone the repository\
+Clone the repository
 
-Add .env file inside backend folder\
+Add .env file inside backend folder
 
 NODE_ENV=development\
 MONGO_URI=MongoURL\
@@ -25,10 +25,10 @@ JWT_SECRET=SECRETTOKEN\
 NODEMAILER_USER=SENDINBlueEmail\
 NODEMAILER_PASS=SENDINBLUEPASSWORD\
 SMTP_HOST=SENDINBLUEHOST\
-SMTP_PORT=587\
+SMTP_PORT=587
 
 node app.js on backend\
-npm start to run frontend\
+npm start to run frontend
 
 
 
