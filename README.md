@@ -1,4 +1,4 @@
-# Mern-TodoManager \n
+# Mern-TodoManager \
 
 Simple Todo application with task progress indication using fusion charts \n
 Used sendInBlue service for sending email https://www.sendinblue.com/. /n
