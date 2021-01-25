@@ -27,6 +27,8 @@ NODEMAILER_PASS=SENDINBLUEPASSWORD\
 SMTP_HOST=SENDINBLUEHOST\
 SMTP_PORT=587
 
+run npm install on both frontend and backend folders
+
 node app.js to run backend\
 npm start to run frontend
 
